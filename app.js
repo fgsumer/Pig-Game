@@ -11,7 +11,7 @@ GAME RULES:
 
 // if I use (Math.random() * 6).toFixed() instead of Math.floor(Math.random() * 6), it gives string and it doesn't calculate scores
 // gamePlaying is the state function
-let roundScore, activePlayer, scores, gamePlaying;
+let roundScore, activePlayer, scores, gamePlaying, lastDice;
 init();
 
 document.querySelector('.dice').style.display = 'none';
@@ -26,8 +26,11 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     diceDom.style.display = 'block';
     diceDom.src = './images/dice-' + dice + '.png';
 
-    // 3- update the round score if the random is not 1
-    if (dice !== 1) {
+    if (lastDice === 6 && dice === 6) {
+      scores[activePlayer] = 0;
+      document.getElementById('score-' + activePlayer).textContent = '0';
+    } else if (dice !== 1) {
+      // 3- update the round score if the random is not 1
       // add score
       roundScore += dice;
       // update current score part
@@ -36,6 +39,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
       // change the active player = next player
       nextPlayer();
     }
+    // it should be at the end of
+    lastDice = dice;
   }
 });
 
