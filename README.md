@@ -1,5 +1,11 @@
 # Pig-Game
 
+Part of the [Complete JavaScript Course] (https://www.udemy.com/course/the-complete-javascript-course/) I completed, this project put JavaScript concepts from the section on DOM manipulation and events into practice.
+
+## Clone 
+- Clone this repo to your local machine using ```https://github.com/fgsumer/Pig-Game.git```
+
+
 ### GAME RULES:
 
 - The game has 2 players, playing in rounds
