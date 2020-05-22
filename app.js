@@ -12,10 +12,7 @@ GAME RULES:
 // if I use (Math.random() * 6).toFixed() instead of Math.floor(Math.random() * 6), it gives string and it doesn't calculate scores
 
 let roundScore, activePlayer, scores;
-
-roundScore = 0;
-activePlayer = 0;
-scores = [0, 0];
+init();
 
 document.querySelector('.dice').style.display = 'none';
 
@@ -45,8 +42,17 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
   scores[activePlayer] += roundScore;
   // visible to UI
   document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
-  nextPlayer();
+
   // check if the player won
+  if (scores[activePlayer] >= 20) {
+    document.getElementById('name-' + activePlayer).textContent = 'winner!';
+    // alert(activePlayer + ' is the winner of the game');
+    document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+    document.querySelector('.player-' + activePlayer + '-panel').classList.add('active');
+  } else {
+    nextPlayer();
+  }
 });
 
 function nextPlayer() {
@@ -62,4 +68,26 @@ function nextPlayer() {
 
   // make the dice invisible when it change the player
   document.querySelector('.dice').style.display = 'none';
+}
+
+// we are passing init as an argument, not calling it here. callback function
+document.querySelector('.btn-new').addEventListener('click', init);
+
+function init() {
+  roundScore = 0;
+  activePlayer = 0;
+  scores = [0, 0];
+
+  document.querySelector('.dice').style.display = 'none';
+  document.getElementById('score-0').textContent = '0';
+  document.getElementById('score-1').textContent = '0';
+  document.getElementById('current-0').textContent = '0';
+  document.getElementById('current-0').textContent = '0';
+  document.getElementById('name-0').textContent = 'Player 1';
+  document.getElementById('name-1').textContent = 'Player 2';
+  document.querySelector('.player-0-panel').classList.remove('winner');
+  document.querySelector('.player-1-panel').classList.remove('winner');
+  document.querySelector('.player-0-panel').classList.remove('active');
+  document.querySelector('.player-1-panel').classList.remove('active');
+  document.querySelector('.player-0-panel').classList.add('active');
 }
