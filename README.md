@@ -1,5 +1,7 @@
 # Pig-Game
 
+![pig-game](images/pig-game.png)
+
 Part of the [Complete JavaScript Course](https://www.udemy.com/course/the-complete-javascript-course/) I completed, this project put JavaScript concepts from the section on DOM manipulation and events into practice.
 
 ## Clone 
